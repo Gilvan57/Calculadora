@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculadora Básica</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+		}
+		input[type="number"] {
+			padding: 5px;
+			margin: 10px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			width: 200px;
+		}
+		input[type="submit"] {
+			padding: 5px;
+			margin: 10px;
+			border-radius: 5px;
+			background-color: #4CAF50;
+			color: #fff;
+			border: none;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<h1>Calculadora Básica</h1>
+	<form>
+		<input type="number" name="num1" placeholder="Digite o primeiro número" required>
+		<br>
+		<input type="number" name="num2" placeholder="Digite o segundo número" required>
+		<br>
+		<select name="operacao" required>
+			<option value="">Selecione a operação</option>
+			<option value="soma">+</option>
+			<option value="subtracao">-</option>
+			<option value="multiplicacao">*</option>
+			<option value="divisao">/</option>
+		</select>
+		<br>
+		<input type="submit" value="Calcular">
+	</form>
+
+	<?php
+		if (isset($_GET['num1']) && isset($_GET['num2']) && isset($_GET['operacao'])) {
+			$num1 = $_GET['num1'];
+			$num2 = $_GET['num2'];
+			$operacao = $_GET['operacao'];
+			switch ($operacao) {
+				case 'soma':
+					$resultado = $num1 + $num2;
+					echo "<h2>$num1 + $num2 = $resultado</h2>";
+					break;
+				case 'subtracao':
+					$resultado = $num1 - $num2;
+					echo "<h2>$num1 - $num2 = $resultado</h2>";
+					break;
+				case 'multiplicacao':
+					$resultado = $num1 * $num2;
+					echo "<h2>$num1 * $num2 = $resultado</h2>";
+					break;
+				case 'divisao':
+					$resultado = $num1 / $num2;
+					echo "<h2>$num1 / $num2 = $resultado</h2>";
+					break;
+				default:
+					echo "<h2>Operação inválida!</h2>";
+					break;
+			}
+		}
+	?>
+</body>
+</html>
